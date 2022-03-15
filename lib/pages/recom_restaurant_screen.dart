@@ -3,7 +3,7 @@ part of 'pages.dart';
 class RecomRestaurantScreen extends StatelessWidget {
   const RecomRestaurantScreen({Key? key}) : super(key: key);
 
-  Widget _customAppBar(BuildContext context) {
+  Widget _titleAppBar(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -109,37 +109,14 @@ class RecomRestaurantScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAndroid(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: SafeArea(
-          child: _customAppBar(context),
-        ),
-      ),
-      body: _buildList(context),
-    );
-  }
-
-  Widget _buildIos(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [_customAppBar(context)],
-        ),
-        transitionBetweenRoutes: false,
-        border: const Border(bottom: BorderSide(color: Colors.transparent)),
-        backgroundColor: Colors.white,
-      ),
-      child: _buildList(context),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return PlatformWidget(
-      androidBuilder: _buildAndroid,
-      iosBuilder: _buildIos,
+    return ChangeNotifierProvider<RestaurantsProvider>(
+      create: (_) => RestaurantsProvider(apiService: ApiService()),
+      child: CustomAppBar(
+        title: _titleAppBar(context),
+        body: _buildList(context),
+      ),
     );
   }
 }
