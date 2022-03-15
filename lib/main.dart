@@ -19,9 +19,24 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         dividerColor: Colors.transparent,
         textTheme: textTheme,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: const AppBarTheme(
           elevation: 0,
           color: Colors.white,
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: blue,
+          unselectedItemColor: Colors.grey,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            onPrimary: Colors.white,
+            primary: blue,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            ),
+          ),
         ),
       ),
       initialRoute: SplashScreen.routeName,

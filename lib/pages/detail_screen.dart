@@ -176,15 +176,6 @@ class _DetailScreenState extends State<DetailScreen> {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                onPrimary: Colors.white,
-                primary: blue,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                ),
-              ),
               onPressed: () {
                 showDialog(
                     context: context,

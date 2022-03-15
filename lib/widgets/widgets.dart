@@ -18,3 +18,4 @@ part 'platform_widget.dart';
 part 'search_textfield.dart';
 part 'view_empty.dart';
 part 'view_error.dart';
+part 'custom_app_bar.dart';
