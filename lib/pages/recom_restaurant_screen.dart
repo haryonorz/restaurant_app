@@ -111,11 +111,29 @@ class RecomRestaurantScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<RestaurantsProvider>(
-      create: (_) => RestaurantsProvider(apiService: ApiService()),
-      child: CustomAppBar(
-        title: _titleAppBar(context),
-        body: _buildList(context),
+    return CustomAppBar(
+      title: _titleAppBar(context),
+      body: _buildList(context),
+      androidMenu: [
+        IconButton(
+          onPressed: () =>
+              Navigator.pushNamed(context, SettingScreen.routeName),
+          icon: const Icon(
+            Icons.settings,
+            color: black,
+          ),
+        ),
+      ],
+      iosMenu: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: () =>
+                Navigator.pushNamed(context, SettingScreen.routeName),
+            child: const Icon(CupertinoIcons.settings),
+          ),
+        ],
       ),
     );
   }

@@ -1,8 +1,8 @@
 part of 'models.dart';
 
 class Menu {
-  late List<Food> foods;
-  late List<Drink> drinks;
+  late List<Item> foods;
+  late List<Item> drinks;
 
   Menu({
     required this.foods,
@@ -10,26 +10,18 @@ class Menu {
   });
 }
 
-class Food {
+class Item {
   late String name;
 
-  Food({
+  Item({
     required this.name,
   });
 
-  Food.fromJson(Map<String, dynamic> food) {
-    name = food['name'];
+  Item.fromJson(Map<String, dynamic> item) {
+    name = item['name'];
   }
-}
 
-class Drink {
-  late String name;
-
-  Drink({
-    required this.name,
-  });
-
-  Drink.fromJson(Map<String, dynamic> drink) {
-    name = drink['name'];
-  }
+  Map<String, dynamic> toJson() => {
+        'name': name,
+      };
 }

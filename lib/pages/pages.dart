@@ -16,3 +16,4 @@ part 'home_screen.dart';
 part 'detail_screen.dart';
 part 'search_screen.dart';
 part 'recom_restaurant_screen.dart';
+part 'setting_screen.dart';

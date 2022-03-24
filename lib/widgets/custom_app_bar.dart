@@ -2,12 +2,14 @@ part of 'widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final Widget title;
-  final List<Widget>? menu;
+  final List<Widget>? androidMenu;
+  final Widget? iosMenu;
   final Widget body;
 
   const CustomAppBar({
     required this.title,
-    this.menu,
+    this.androidMenu,
+    this.iosMenu,
     required this.body,
     Key? key,
   }) : super(key: key);
@@ -18,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
         flexibleSpace: SafeArea(
           child: title,
         ),
-        actions: menu,
+        actions: androidMenu,
       ),
       body: body,
     );
@@ -27,18 +29,17 @@ class CustomAppBar extends StatelessWidget {
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-          middle: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              title,
-            ],
-          ),
-          transitionBetweenRoutes: false,
-          border: const Border(bottom: BorderSide(color: Colors.transparent)),
-          backgroundColor: Colors.white,
-          trailing: Row(
-            children: menu ?? [],
-          )),
+        middle: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            title,
+          ],
+        ),
+        transitionBetweenRoutes: false,
+        border: const Border(bottom: BorderSide(color: Colors.transparent)),
+        backgroundColor: Colors.white,
+        trailing: iosMenu,
+      ),
       child: body,
     );
   }

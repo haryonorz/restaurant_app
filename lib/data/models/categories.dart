@@ -10,4 +10,8 @@ class Categories {
   Categories.fromJson(Map<String, dynamic> category) {
     name = category['name'];
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+      };
 }

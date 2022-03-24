@@ -2,6 +2,7 @@ part of 'pages.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = '/search';
+  static const String searchTitle = 'Search';
 
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -80,7 +81,7 @@ class _SearchScreenState extends State<SearchScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          "Search",
+          SearchScreen.searchTitle,
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
@@ -110,7 +111,7 @@ class _SearchScreenState extends State<SearchScreen> {
               onPressed: () => Navigator.pop(context),
             ),
             Text(
-              "Search",
+              SearchScreen.searchTitle,
               style: Theme.of(context).textTheme.headline6,
             ),
           ],
@@ -132,12 +133,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SearchRestaurantsProvider>(
-      create: (_) => SearchRestaurantsProvider(apiService: ApiService()),
-      child: PlatformWidget(
-        androidBuilder: _buildAndroid,
-        iosBuilder: _buildIos,
-      ),
+    return PlatformWidget(
+      androidBuilder: _buildAndroid,
+      iosBuilder: _buildIos,
     );
   }
 }

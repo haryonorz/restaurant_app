@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _bottomNavIndex = 0;
   static const String _restaurantText = 'Home';
+  static const String _favoriteText = 'Favorite';
 
   final List<Widget> _listWidget = const [
     RecomRestaurantScreen(),
@@ -25,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Platform.isIOS ? CupertinoIcons.heart_fill : Icons.favorite),
-      label: "Favorite",
+      label: _favoriteText,
     ),
   ];
 
@@ -57,12 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<RestaurantsProvider>(
-      create: (_) => RestaurantsProvider(apiService: ApiService()),
-      child: PlatformWidget(
-        androidBuilder: _buildAndroid,
-        iosBuilder: _buildIos,
-      ),
+    return PlatformWidget(
+      androidBuilder: _buildAndroid,
+      iosBuilder: _buildIos,
     );
   }
 }

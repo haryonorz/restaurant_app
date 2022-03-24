@@ -7,6 +7,9 @@ const lightGrey = Color(0xFFEDF0F7);
 const blue = Color(0xFF0094FF);
 const yellow = Color(0xFFEFC903);
 
+final Color primaryColor = Color(0xFFFFFFFF);
+final Color darkPrimaryColor = Color(0xFF000000);
+
 final textTheme = TextTheme(
   headline1: GoogleFonts.roboto(
       fontSize: 96, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -32,4 +35,62 @@ final textTheme = TextTheme(
       fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.4),
   overline: GoogleFonts.nunitoSans(
       fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+);
+
+ThemeData lightTheme = ThemeData(
+  colorScheme: ThemeData.light().colorScheme.copyWith(
+        primary: primaryColor,
+        onPrimary: Colors.black,
+        secondary: blue,
+      ),
+  scaffoldBackgroundColor: Colors.white,
+  dividerColor: Colors.transparent,
+  textTheme: textTheme,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: Colors.white,
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    selectedItemColor: blue,
+    unselectedItemColor: Colors.grey,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: blue,
+      onPrimary: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    ),
+  ),
+);
+
+ThemeData darkTheme = ThemeData.dark().copyWith(
+  colorScheme: ThemeData.dark().colorScheme.copyWith(
+        primary: darkPrimaryColor,
+        onPrimary: Colors.black,
+        secondary: blue,
+      ),
+  textTheme: textTheme,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: Colors.white,
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    selectedItemColor: blue,
+    unselectedItemColor: Colors.grey,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: blue,
+      onPrimary: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    ),
+  ),
 );
