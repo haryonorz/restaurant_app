@@ -7,9 +7,6 @@ const lightGrey = Color(0xFFEDF0F7);
 const blue = Color(0xFF0094FF);
 const yellow = Color(0xFFEFC903);
 
-final Color primaryColor = Color(0xFFFFFFFF);
-final Color darkPrimaryColor = Color(0xFF000000);
-
 final textTheme = TextTheme(
   headline1: GoogleFonts.roboto(
       fontSize: 96, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -39,7 +36,7 @@ final textTheme = TextTheme(
 
 ThemeData lightTheme = ThemeData(
   colorScheme: ThemeData.light().colorScheme.copyWith(
-        primary: primaryColor,
+        primary: Colors.white,
         onPrimary: Colors.black,
         secondary: blue,
       ),
@@ -69,15 +66,17 @@ ThemeData lightTheme = ThemeData(
 
 ThemeData darkTheme = ThemeData.dark().copyWith(
   colorScheme: ThemeData.dark().colorScheme.copyWith(
-        primary: darkPrimaryColor,
-        onPrimary: Colors.black,
+        primary: Colors.black,
+        onPrimary: Colors.white,
         secondary: blue,
       ),
+  scaffoldBackgroundColor: Colors.black,
+  dividerColor: Colors.transparent,
   textTheme: textTheme,
   visualDensity: VisualDensity.adaptivePlatformDensity,
   appBarTheme: const AppBarTheme(
     elevation: 0,
-    color: Colors.white,
+    color: Colors.black,
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     selectedItemColor: blue,

@@ -24,8 +24,9 @@ class _DetailScreenState extends State<DetailScreen> {
     return SliverAppBar(
       pinned: true,
       expandedHeight: 200,
-      iconTheme: const IconThemeData(
-        color: black,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      iconTheme: IconThemeData(
+        color: Theme.of(context).primaryColor,
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(
@@ -187,10 +188,7 @@ class _DetailScreenState extends State<DetailScreen> {
               },
               child: Text(
                 'Add Review',
-                style: Theme.of(context)
-                    .textTheme
-                    .button
-                    ?.copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.button,
               ),
             ),
           ),

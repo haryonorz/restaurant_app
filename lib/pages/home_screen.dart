@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _listWidget = const [
     RecomRestaurantScreen(),
-    Placeholder(),
+    FavoriteScreen(),
   ];
 
   final List<BottomNavigationBarItem> _bottomNavBarItems = [

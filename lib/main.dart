@@ -48,6 +48,8 @@ class MyApp extends StatelessWidget {
                 data: CupertinoThemeData(
                   brightness:
                       provider.isDarkTheme ? Brightness.dark : Brightness.light,
+                  scaffoldBackgroundColor:
+                      provider.isDarkTheme ? Colors.black : Colors.white,
                 ),
                 child: Material(
                   child: child,

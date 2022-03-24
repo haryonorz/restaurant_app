@@ -21,7 +21,7 @@ class ItemCategories extends StatelessWidget {
       child: Center(
         child: Text(
           name,
-          style: Theme.of(context).textTheme.caption?.copyWith(color: grey),
+          style: Theme.of(context).textTheme.caption,
         ),
       ),
     );

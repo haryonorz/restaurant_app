@@ -94,10 +94,7 @@ class ItemRestaurant extends StatelessWidget {
                               text: ' ${restaurant.city}',
                             )
                           ],
-                          style: Theme.of(context)
-                              .textTheme
-                              .caption
-                              ?.copyWith(color: black),
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ),
                       const SizedBox(

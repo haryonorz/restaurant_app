@@ -26,11 +26,11 @@ class DatabaseHelper {
           city TEXT,
           address TEXT,
           categories TEXT,
-          rating DOUBLE,
+          rating REAL,
           menu TEXT,
-          review TEXT,
-          )
-          ''');
+          review TEXT
+          )     
+        ''');
       },
       version: 1,
     );
@@ -38,7 +38,7 @@ class DatabaseHelper {
   }
 
   Future<Database?> get database async {
-    if (_database != null) _database = await _initializeDb();
+    _database ??= await _initializeDb();
     return _database;
   }
 
@@ -50,7 +50,6 @@ class DatabaseHelper {
   Future<List<Restaurant>> getFavorites() async {
     final db = await database;
     List<Map<String, dynamic>> results = await db!.query(_tblFavorite);
-
     return results.map((res) => Restaurant.fromJson(res)).toList();
   }
 

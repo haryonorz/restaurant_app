@@ -70,6 +70,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
           color: grey,
         ),
       ),
+      placeholderStyle: const TextStyle(color: grey),
     );
   }
 

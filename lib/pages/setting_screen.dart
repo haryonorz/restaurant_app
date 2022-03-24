@@ -10,7 +10,7 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: black,
+          color: Theme.of(context).primaryColor,
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
@@ -27,11 +27,11 @@ class SettingScreen extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         transitionBetweenRoutes: false,
         border: const Border(bottom: BorderSide(color: Colors.transparent)),
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: Row(
           children: [
             CupertinoNavigationBarBackButton(
-              color: black,
+              color: Theme.of(context).primaryColor,
               onPressed: () => Navigator.pop(context),
             ),
           ],

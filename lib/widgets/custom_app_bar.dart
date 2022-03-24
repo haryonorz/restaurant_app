@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
         ),
         transitionBetweenRoutes: false,
         border: const Border(bottom: BorderSide(color: Colors.transparent)),
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         trailing: iosMenu,
       ),
       child: body,
