@@ -14,6 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   static const String _restaurantText = 'Home';
   static const String _favoriteText = 'Favorite';
 
+  final NotificationHelper _notificationHelper = NotificationHelper();
+
   final List<Widget> _listWidget = const [
     RecomRestaurantScreen(),
     FavoriteScreen(),
@@ -54,6 +56,19 @@ class _HomeScreenState extends State<HomeScreen> {
         return _listWidget[index];
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper
+        .configureSelectNotificationSubject(DetailScreen.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 
   @override

@@ -78,7 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         leading: BackButton(
           color: Theme.of(context).primaryColor,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigation.back(),
         ),
         title: Text(
           SearchScreen.searchTitle,
@@ -108,7 +108,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             CupertinoNavigationBarBackButton(
               color: Theme.of(context).primaryColor,
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigation.back(),
             ),
             Text(
               SearchScreen.searchTitle,

@@ -28,7 +28,7 @@ class _DialogAddReviewState extends State<DialogAddReview> {
       nameController.text,
       reviewController.text,
     );
-    Navigator.of(context).pop();
+    Navigation.back();
     if (errorResponse != null) {
       showDialog(
           context: context,
@@ -39,19 +39,19 @@ class _DialogAddReviewState extends State<DialogAddReview> {
                 CupertinoDialogAction(
                   child: const Text('Ok'),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigation.back();
                   },
                 ),
               ],
             );
           });
     } else {
-      Navigator.of(context).pop();
+      Navigation.back();
     }
   }
 
   void _onNoPressed() {
-    Navigator.of(context).pop();
+    Navigation.back();
   }
 
   Widget _buildAndroid(BuildContext context) {

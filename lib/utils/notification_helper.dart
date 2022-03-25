@@ -13,24 +13,26 @@ class NotificationHelper {
 
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var initializationSettingAndroid =
-        AndroidInitializationSettings('app_icon');
+    var initializationSettingsAndroid =
+        const AndroidInitializationSettings('app_icon');
 
-    var initializationSettingIOS = IOSInitializationSettings(
+    var initializationSettingsIOS = const IOSInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
     );
 
     var initializationSettings = InitializationSettings(
-      android: initializationSettingAndroid,
-      iOS: initializationSettingIOS,
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
     );
 
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: (String? payload) async {
       if (payload != null) {
-        print('notification payload: $payload');
+        if (kDebugMode) {
+          print('notification payload: $payload');
+        }
       }
       selectNotificationSubject.add(payload ?? 'Empty payload');
     });
@@ -51,17 +53,17 @@ class NotificationHelper {
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'ticker',
-      styleInformation: DefaultStyleInformation(true, true),
+      styleInformation: const DefaultStyleInformation(true, true),
     );
 
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
 
-    var titleNotification = '<b>Recomendation Restaurant</b>';
-    var titleRestaurant = restaurant.name;
+    var titleNotification = '<b>${restaurant.name}</b>';
+    var titleRestaurant = 'Recommendation restaurant for you';
 
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -72,11 +74,10 @@ class NotificationHelper {
     );
   }
 
-  void configurationSelectNotificationSubject(String route) {
+  void configureSelectNotificationSubject(String route) {
     selectNotificationSubject.stream.listen((String payload) async {
-      var data = RestaurantsResult.fromJson(json.decode(payload));
-      var restaurant = data.restaurants[0];
-      Navigation.intentWithData(route, restaurant);
+      var data = Restaurant.fromJson(json.decode(payload));
+      Navigation.intentWithData(route, data);
     });
   }
 }

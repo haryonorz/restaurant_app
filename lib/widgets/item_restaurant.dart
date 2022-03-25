@@ -16,11 +16,7 @@ class ItemRestaurant extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(
-              context,
-              DetailScreen.routeName,
-              arguments: restaurant,
-            );
+            Navigation.intentWithData(DetailScreen.routeName, restaurant);
           },
           borderRadius: BorderRadius.circular(16.0),
           child: Container(

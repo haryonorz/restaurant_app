@@ -11,7 +11,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         leading: BackButton(
           color: Theme.of(context).primaryColor,
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigation.back(),
         ),
         title: Text(
           settingTitle,
@@ -32,7 +32,7 @@ class SettingScreen extends StatelessWidget {
           children: [
             CupertinoNavigationBarBackButton(
               color: Theme.of(context).primaryColor,
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigation.back(),
             ),
           ],
         ),
@@ -66,26 +66,26 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Material(
-            //   child: ListTile(
-            //     title: Text('Scheduling News'),
-            //     trailing: Consumer<SchedulingProvider>(
-            //       builder: (context, scheduled, _) {
-            //         return Switch.adaptive(
-            //           value: provider.isDailyNewsActive,
-            //           onChanged: (value) async {
-            //             if (Platform.isIOS) {
-            //               customDialog(context);
-            //             } else {
-            //               scheduled.scheduledNews(value);
-            //               provider.enableDailyNews(value);
-            //             }
-            //           },
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
+            Material(
+              child: ListTile(
+                title: const Text('Scheduling Restaurant'),
+                trailing: Consumer<SchedulingProvider>(
+                  builder: (context, scheduled, _) {
+                    return Switch.adaptive(
+                      value: provider.isDailyReminderActive,
+                      onChanged: (value) async {
+                        if (Platform.isIOS) {
+                          customDialog(context);
+                        } else {
+                          scheduled.scheduledRestaurant(value);
+                          provider.enableDailyReminder(value);
+                        }
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         );
       },
