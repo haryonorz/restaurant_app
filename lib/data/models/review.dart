@@ -16,10 +16,4 @@ class Review {
     review = reviews['review'];
     date = reviews['date'];
   }
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'review': review,
-        'date': date,
-      };
 }

@@ -60,14 +60,10 @@ class MyApp extends StatelessWidget {
             routes: {
               SplashScreen.routeName: (context) => const SplashScreen(),
               HomeScreen.routeName: (context) => const HomeScreen(),
-              DetailScreen.routeName: (context) {
-                final arguments = ModalRoute.of(context)?.settings.arguments
-                    as ScreenArguments;
-                return DetailScreen(
-                  id: arguments.id,
-                  pictureId: arguments.pictureId,
-                );
-              },
+              DetailScreen.routeName: (context) => DetailScreen(
+                    restaurant: ModalRoute.of(context)?.settings.arguments
+                        as Restaurant,
+                  ),
               SearchScreen.routeName: (context) => const SearchScreen(),
               SettingScreen.routeName: (context) => const SettingScreen(),
             },

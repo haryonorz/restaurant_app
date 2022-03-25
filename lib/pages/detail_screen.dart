@@ -3,12 +3,10 @@ part of 'pages.dart';
 class DetailScreen extends StatefulWidget {
   static const routeName = '/restaurant_detail';
 
-  final String id;
-  final String pictureId;
+  final Restaurant restaurant;
 
   const DetailScreen({
-    required this.id,
-    required this.pictureId,
+    required this.restaurant,
     Key? key,
   }) : super(key: key);
 
@@ -20,7 +18,7 @@ class _DetailScreenState extends State<DetailScreen> {
   bool foodExpanded = false;
   bool drinkExpanded = false;
 
-  Widget _buildAppBar() {
+  Widget _buildAppBar({List<Widget>? actions}) {
     return SliverAppBar(
       pinned: true,
       expandedHeight: 200,
@@ -30,14 +28,14 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Hero(
-          tag: widget.pictureId,
+          tag: widget.restaurant.pictureId,
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(16.0),
               bottomRight: Radius.circular(16.0),
             ),
             child: Image.network(
-              ApiService().urlImage + widget.pictureId,
+              ApiService().urlImage + widget.restaurant.pictureId,
               fit: BoxFit.cover,
               loadingBuilder: (BuildContext context, Widget child,
                   ImageChunkEvent? loadingProgress) {
@@ -57,6 +55,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
+      actions: actions,
     );
   }
 
@@ -182,13 +181,16 @@ class _DetailScreenState extends State<DetailScreen> {
                     context: context,
                     builder: (context) {
                       return DialogAddReview(
-                        id: widget.id,
+                        id: widget.restaurant.id,
                       );
                     });
               },
               child: Text(
                 'Add Review',
-                style: Theme.of(context).textTheme.button,
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    ?.copyWith(color: Colors.white),
               ),
             ),
           ),
@@ -392,7 +394,33 @@ class _DetailScreenState extends State<DetailScreen> {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          _buildAppBar(),
+          _buildAppBar(
+            actions: [
+              Consumer<DatabaseProvider>(
+                builder: (context, provider, child) {
+                  return FutureBuilder<bool>(
+                    future: provider.isFavorite(widget.restaurant.id),
+                    builder: (context, snapshot) {
+                      var isBookmarked = snapshot.data ?? false;
+                      return isBookmarked
+                          ? CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () =>
+                                  provider.removeFavorite(widget.restaurant.id),
+                              child: const Icon(CupertinoIcons.heart_fill),
+                            )
+                          : CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () =>
+                                  provider.addFavorite(widget.restaurant),
+                              child: const Icon(CupertinoIcons.heart),
+                            );
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
           SliverToBoxAdapter(
             child: Consumer<DetailRestaurantProvider>(
               builder: (context, state, _) {
@@ -424,8 +452,8 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<DetailRestaurantProvider>(
-      create: (_) =>
-          DetailRestaurantProvider(apiService: ApiService(), id: widget.id),
+      create: (_) => DetailRestaurantProvider(
+          apiService: ApiService(), id: widget.restaurant.id),
       child: PlatformWidget(
         androidBuilder: _buildAndroid,
         iosBuilder: _buildIos,

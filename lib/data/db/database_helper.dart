@@ -24,11 +24,7 @@ class DatabaseHelper {
           description TEXT,
           pictureId TEXT,
           city TEXT,
-          address TEXT,
-          categories TEXT,
-          rating REAL,
-          menu TEXT,
-          review TEXT
+          rating REAL
           )     
         ''');
       },

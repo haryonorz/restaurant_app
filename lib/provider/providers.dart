@@ -15,3 +15,4 @@ part 'detail_restaurant_provider.dart';
 part 'preferences_provider.dart';
 part 'state.dart';
 part 'database_provider.dart';
+part 'daily_provider.dart';

@@ -20,8 +20,4 @@ class Item {
   Item.fromJson(Map<String, dynamic> item) {
     name = item['name'];
   }
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-      };
 }

@@ -19,7 +19,7 @@ class ItemRestaurant extends StatelessWidget {
             Navigator.pushNamed(
               context,
               DetailScreen.routeName,
-              arguments: ScreenArguments(restaurant.id, restaurant.pictureId),
+              arguments: restaurant,
             );
           },
           borderRadius: BorderRadius.circular(16.0),
