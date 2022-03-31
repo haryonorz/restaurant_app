@@ -49,7 +49,7 @@ class NotificationHelper {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDescription,
+      channelDescription: _channelDescription,
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'ticker',

@@ -6,9 +6,12 @@ class FavoriteScreen extends StatelessWidget {
   Widget _titleAppBar(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 16.0),
-      child: Text(
-        'Favorite',
-        style: Theme.of(context).textTheme.headline6,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          'Favorite',
+          style: Theme.of(context).textTheme.headline6,
+        ),
       ),
     );
   }

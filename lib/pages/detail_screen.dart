@@ -352,7 +352,33 @@ class _DetailScreenState extends State<DetailScreen> {
       body: NestedScrollView(
         headerSliverBuilder: (context, isScrolled) {
           return [
-            _buildAppBar(),
+            _buildAppBar(
+              actions: [
+                Consumer<DatabaseProvider>(
+                  builder: (context, provider, child) {
+                    return FutureBuilder<bool>(
+                      future: provider.isFavorite(widget.restaurant.id),
+                      builder: (context, snapshot) {
+                        var isBookmarked = snapshot.data ?? false;
+                        return isBookmarked
+                            ? IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () => provider
+                                    .removeFavorite(widget.restaurant.id),
+                                icon: const Icon(CupertinoIcons.heart_fill),
+                              )
+                            : IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () =>
+                                    provider.addFavorite(widget.restaurant),
+                                icon: const Icon(CupertinoIcons.heart),
+                              );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ];
         },
         body: Consumer<DetailRestaurantProvider>(

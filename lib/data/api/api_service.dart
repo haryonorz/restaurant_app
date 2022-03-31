@@ -11,7 +11,7 @@ class ApiService {
 
   Client? client;
   ApiService({this.client}) {
-    client ?? Client();
+    client ??= Client();
   }
 
   Future<RestaurantsResult> recommendationRestaurants() async {
