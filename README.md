@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/preview.gif"/>
+  <img width="30%" src="assets/preview.gif"/>
 </p>
 
 ## Features
