@@ -1,17 +1,36 @@
-# restaurant_app
+<h1 align="center">
+  Restoran App
+</h1>
+<p align="center">
+  Submission Fundamental Flutter in Dicoding Course.
+</p>
+<p align="center">
+  <a href="http://developer.android.com/index.html"><img alt="Platform" src="https://img.shields.io/badge/platform-Android%20%7C%20iOS-green.svg"></a>
+  <a href="http://kotlinlang.org"><img alt="Flutter" src="https://img.shields.io/badge/flutter-2.10.3-blue.svg"></a>
+  <a href="https://github.com/haryonorz/MOV/"><img alt="Fork" src="https://img.shields.io/github/forks/haryonorz/restaurant_app"></a>
+  <a href="https://github.com/haryonorz/MOV/"><img alt="Star" src="https://img.shields.io/github/stars/haryonorz/restaurant_app"></a>
+  <a href="https://github.com/haryonorz/MOV/"><img alt="Watch" src="https://img.shields.io/github/watchers/haryonorz/restaurant_app"></a>
+</p>
 
-A new Flutter project.
+<p align="center">
+  <img src="assets/preview.gif"/>
+</p>
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Get All Recommendation Restaurant
+- Search Restaurant
+- Favorited Restaurant
+- Dark Theme
+- Daily Reminder (platform Android)
+- Review Restaurant
 
-A few resources to get you started if this is your first Flutter project:
+## Package
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# restaurant_app
+- [Flutter Local Notification](https://pub.dev/packages/flutter_local_notifications)
+- [Android Alarm Manager Plus](https://pub.dev/packages/android_alarm_manager_plus)
+- [RxDart](https://pub.dev/packages/rxdart)
+- [Provider](https://pub.dev/packages/provider)
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)
+- [Http](https://pub.dev/packages/http)
+- [sqflite](https://pub.dev/packages/sqflite)
