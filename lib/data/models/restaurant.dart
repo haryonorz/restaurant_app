@@ -41,13 +41,13 @@ class Restaurant {
     rating = restaurant['rating'];
     menu = restaurant['menus'] != null
         ? Menu(
-            foods: List<Food>.from(
+            foods: List<Item>.from(
               (restaurant['menus']['foods'] as List)
-                  .map((e) => Food.fromJson(e)),
+                  .map((e) => Item.fromJson(e)),
             ),
-            drinks: List<Drink>.from(
+            drinks: List<Item>.from(
               (restaurant['menus']['drinks'] as List)
-                  .map((e) => Drink.fromJson(e)),
+                  .map((e) => Item.fromJson(e)),
             ))
         : null;
     reviews = restaurant['customerReviews'] != null
@@ -56,5 +56,16 @@ class Restaurant {
                 .map((e) => Review.fromJson(e)),
           )
         : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "description": description,
+      "pictureId": pictureId,
+      "city": city,
+      "rating": rating,
+    };
   }
 }

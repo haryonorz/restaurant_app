@@ -2,6 +2,7 @@ part of 'pages.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = '/search';
+  static const String searchTitle = 'Search';
 
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -76,11 +77,11 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          color: black,
-          onPressed: () => Navigator.pop(context),
+          color: Theme.of(context).primaryColor,
+          onPressed: () => Navigation.back(),
         ),
         title: Text(
-          "Search",
+          SearchScreen.searchTitle,
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
@@ -102,15 +103,15 @@ class _SearchScreenState extends State<SearchScreen> {
       navigationBar: CupertinoNavigationBar(
         transitionBetweenRoutes: false,
         border: const Border(bottom: BorderSide(color: Colors.transparent)),
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: Row(
           children: [
             CupertinoNavigationBarBackButton(
-              color: black,
-              onPressed: () => Navigator.pop(context),
+              color: Theme.of(context).primaryColor,
+              onPressed: () => Navigation.back(),
             ),
             Text(
-              "Search",
+              SearchScreen.searchTitle,
               style: Theme.of(context).textTheme.headline6,
             ),
           ],
@@ -132,12 +133,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SearchRestaurantsProvider>(
-      create: (_) => SearchRestaurantsProvider(apiService: ApiService()),
-      child: PlatformWidget(
-        androidBuilder: _buildAndroid,
-        iosBuilder: _buildIos,
-      ),
+    return PlatformWidget(
+      androidBuilder: _buildAndroid,
+      iosBuilder: _buildIos,
     );
   }
 }

@@ -33,25 +33,16 @@ class ItemReview extends StatelessWidget {
               children: [
                 Text(
                   review.name,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption
-                      ?.copyWith(color: black),
+                  style: Theme.of(context).textTheme.caption,
                 ),
                 Text(
                   review.date,
-                  style: Theme.of(context)
-                      .textTheme
-                      .overline
-                      ?.copyWith(color: grey),
+                  style: Theme.of(context).textTheme.overline,
                 ),
                 const SizedBox(height: 12.0),
                 Text(
                   review.review,
-                  style: Theme.of(context)
-                      .textTheme
-                      .caption
-                      ?.copyWith(color: black),
+                  style: Theme.of(context).textTheme.caption,
                 ),
               ],
             ),

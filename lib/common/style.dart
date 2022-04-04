@@ -33,3 +33,63 @@ final textTheme = TextTheme(
   overline: GoogleFonts.nunitoSans(
       fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 1.5),
 );
+
+ThemeData lightTheme = ThemeData(
+  colorScheme: ThemeData.light().colorScheme.copyWith(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        secondary: blue,
+      ),
+  scaffoldBackgroundColor: Colors.white,
+  dividerColor: Colors.transparent,
+  textTheme: textTheme,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: Colors.white,
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    selectedItemColor: blue,
+    unselectedItemColor: Colors.grey,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: blue,
+      onPrimary: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    ),
+  ),
+);
+
+ThemeData darkTheme = ThemeData.dark().copyWith(
+  colorScheme: ThemeData.dark().colorScheme.copyWith(
+        primary: Colors.black,
+        onPrimary: Colors.white,
+        secondary: blue,
+      ),
+  scaffoldBackgroundColor: Colors.black,
+  dividerColor: Colors.transparent,
+  textTheme: textTheme,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: Colors.black,
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    selectedItemColor: blue,
+    unselectedItemColor: Colors.grey,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      primary: blue,
+      onPrimary: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      ),
+    ),
+  ),
+);

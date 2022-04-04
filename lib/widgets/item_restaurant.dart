@@ -16,11 +16,7 @@ class ItemRestaurant extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(
-              context,
-              DetailScreen.routeName,
-              arguments: ScreenArguments(restaurant.id, restaurant.pictureId),
-            );
+            Navigation.intentWithData(DetailScreen.routeName, restaurant);
           },
           borderRadius: BorderRadius.circular(16.0),
           child: Container(
@@ -94,10 +90,7 @@ class ItemRestaurant extends StatelessWidget {
                               text: ' ${restaurant.city}',
                             )
                           ],
-                          style: Theme.of(context)
-                              .textTheme
-                              .caption
-                              ?.copyWith(color: black),
+                          style: Theme.of(context).textTheme.caption,
                         ),
                       ),
                       const SizedBox(

@@ -41,10 +41,14 @@ class _SearchTextFieldState extends State<SearchTextField> {
           focusedBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
           hintText: hint,
+          hintStyle: const TextStyle(color: grey),
           prefixIcon: const Icon(
             Icons.search,
             color: grey,
           ),
+        ),
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
         ),
       ),
     );
@@ -70,6 +74,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
           color: grey,
         ),
       ),
+      placeholderStyle: const TextStyle(color: grey),
     );
   }
 

@@ -28,7 +28,7 @@ class _DialogAddReviewState extends State<DialogAddReview> {
       nameController.text,
       reviewController.text,
     );
-    Navigator.of(context).pop();
+    Navigation.back();
     if (errorResponse != null) {
       showDialog(
           context: context,
@@ -37,21 +37,24 @@ class _DialogAddReviewState extends State<DialogAddReview> {
               title: Text(errorResponse),
               actions: [
                 CupertinoDialogAction(
-                  child: const Text('Ok'),
+                  child: Text(
+                    'Ok',
+                    style: Theme.of(context).textTheme.button,
+                  ),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigation.back();
                   },
                 ),
               ],
             );
           });
     } else {
-      Navigator.of(context).pop();
+      Navigation.back();
     }
   }
 
   void _onNoPressed() {
-    Navigator.of(context).pop();
+    Navigation.back();
   }
 
   Widget _buildAndroid(BuildContext context) {
@@ -76,6 +79,10 @@ class _DialogAddReviewState extends State<DialogAddReview> {
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 hintText: nameHint,
+                hintStyle: const TextStyle(color: grey),
+              ),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -96,6 +103,10 @@ class _DialogAddReviewState extends State<DialogAddReview> {
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 hintText: reviewHint,
+                hintStyle: const TextStyle(color: grey),
+              ),
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -103,13 +114,19 @@ class _DialogAddReviewState extends State<DialogAddReview> {
       ),
       actions: [
         TextButton(
-          child: const Text('Yes'),
+          child: Text(
+            'Yes',
+            style: Theme.of(context).textTheme.button,
+          ),
           onPressed: () {
             _onYesPressed(context);
           },
         ),
         TextButton(
-          child: const Text('No'),
+          child: Text(
+            'No',
+            style: Theme.of(context).textTheme.button,
+          ),
           onPressed: _onNoPressed,
         ),
       ],
@@ -127,6 +144,7 @@ class _DialogAddReviewState extends State<DialogAddReview> {
             placeholder: nameHint,
             textAlignVertical: TextAlignVertical.center,
             maxLines: 1,
+            placeholderStyle: const TextStyle(color: grey),
           ),
           const SizedBox(height: 12),
           CupertinoTextField(
@@ -134,6 +152,7 @@ class _DialogAddReviewState extends State<DialogAddReview> {
             placeholder: reviewHint,
             textAlignVertical: TextAlignVertical.top,
             maxLines: 4,
+            placeholderStyle: const TextStyle(color: grey),
           ),
         ],
       ),
